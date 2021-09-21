@@ -20,19 +20,19 @@ import java.util.Date;
 public class Envio implements Serializable {
 
     @Id
-    @Column(name = "idEnvio")
+    @Column(name = "id_envio")
     private int idEnvio;
 
-    @Column(name = "idCliente")
+    @Column(name = "id_cliente")
     private int idCliente;
 
-    @Column(name = "fechaRegistro")
+    @Column(name = "fecharegistro")
     private Date fechaRegistro;
 
-    @Column(name = "fechaEntrega")
+    @Column(name = "fechaentrega")
     private Date fechaEntrega;
 
-    @Column(name = "idDestino")
+    @Column(name = "id_destino")
     private int idDestino;
 
     @Column(name = "precio")
@@ -41,7 +41,7 @@ public class Envio implements Serializable {
     @Column(name = "guia")
     private String guia;
 
-    @Column(name = "idTransporte")
+    @Column(name = "id_transporte")
     private int idTransporte;
 
 }

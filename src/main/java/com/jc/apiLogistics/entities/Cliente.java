@@ -19,7 +19,7 @@ import java.io.Serializable;
 public class Cliente implements Serializable {
 
     @Id
-    @Column(name = "idCliente")
+    @Column(name = "id_cliente")
     private int idCliente;
 
     @Column(name = "identificacion")

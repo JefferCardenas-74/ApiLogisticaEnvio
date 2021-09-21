@@ -20,9 +20,9 @@ import java.io.Serializable;
 public class TipoIdTransporte implements Serializable {
 
     @Id
-    @Column(name = "idTipoIdTransporte")
+    @Column(name = "id_tipoidtransporte")
     private int idTipoIdTransporte;
 
-    @Column(name = "tipoIdTransporte")
+    @Column(name = "tipoidtransporte")
     private int tipoIdTransporte;
 }

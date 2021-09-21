@@ -8,6 +8,7 @@ import com.jc.apiLogistics.utils.helpers.MMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,6 +33,15 @@ public class ClienteImpl implements IClienteServices {
 
     @Override
     public List<Cliente> findAll() {
-        return null;
+
+        List<Cliente> lista = new ArrayList<>();
+
+        Iterable<Cliente> listaClientes = this.clienteRepository.findAll();
+
+        for(Cliente item : listaClientes){
+
+            lista.add(item);
+        }
+        return lista;
     }
 }

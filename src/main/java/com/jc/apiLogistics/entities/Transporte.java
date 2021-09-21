@@ -19,13 +19,13 @@ import java.io.Serializable;
 public class Transporte implements Serializable {
 
     @Id
-    @Column(name = "idTransporte")
+    @Column(name = "id_transporte")
     private int idTransporte;
 
-    @Column(name = "idTipoTransporte")
+    @Column(name = "id_tipotransporte")
     private int idTipoTransporte;
 
-    @Column(name = "idTipoIdTransporte")
+    @Column(name = "id_tipotdtransporte")
     private int idTipoIdTransporte;
 
     @Column(name = "id")

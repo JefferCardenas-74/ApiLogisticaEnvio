@@ -20,10 +20,10 @@ import java.io.Serializable;
 public class Destino implements Serializable {
 
     @Id
-    @Column(name = "idDestino")
+    @Column(name = "id_destino")
     private int idDestino;
 
-    @Column(name = "idTipoDestino")
+    @Column(name = "id_tipodestino")
     private int idTipoDestino;
 
     @Column(name = "ciudad")
