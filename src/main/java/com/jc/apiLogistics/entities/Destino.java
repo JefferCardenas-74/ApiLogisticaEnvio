@@ -3,10 +3,7 @@ package com.jc.apiLogistics.entities;
 import lombok.Data;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -23,8 +20,9 @@ public class Destino implements Serializable {
     @Column(name = "id_destino")
     private int idDestino;
 
-    @Column(name = "id_tipodestino")
-    private int idTipoDestino;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_tipodestino")
+    private TipoDestino id_tipodestino;
 
     @Column(name = "ciudad")
     private String ciudad;

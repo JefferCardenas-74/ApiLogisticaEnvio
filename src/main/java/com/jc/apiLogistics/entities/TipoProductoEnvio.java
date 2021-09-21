@@ -31,5 +31,4 @@ public class TipoProductoEnvio implements Serializable {
     @Column(name = "cantidad")
     private int cantidad;
 
-
 }

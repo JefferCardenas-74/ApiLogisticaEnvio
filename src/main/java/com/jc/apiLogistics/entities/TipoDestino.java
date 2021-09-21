@@ -1,13 +1,12 @@
 package com.jc.apiLogistics.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.sql.rowset.serial.SerialBlob;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author Jeffer Cardenas <jecgdevp@gmail.com>
@@ -20,9 +19,11 @@ import java.io.Serializable;
 public class TipoDestino implements Serializable {
 
     @Id
-    @Column(name = "id_tipoDestino")
-    private int idTipoDestino;
+    @Column(name = "id_tipodestino")
+    private int id_tipodestino;
 
     @Column(name = "destino")
-    private int destino;
+    private String destino;
+
+
 }
