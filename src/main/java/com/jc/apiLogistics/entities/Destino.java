@@ -17,10 +17,11 @@ import java.io.Serializable;
 public class Destino implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_destino")
-    private int idDestino;
+    private int id_destino;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "id_tipodestino")
     private TipoDestino id_tipodestino;
 

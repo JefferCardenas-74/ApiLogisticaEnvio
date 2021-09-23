@@ -3,6 +3,8 @@ package com.jc.apiLogistics.Controllers;
 import com.jc.apiLogistics.dto.DestinoRequest;
 import com.jc.apiLogistics.entities.Destino;
 import com.jc.apiLogistics.services.interfaces.IDestinoServices;
+import com.jc.apiLogistics.utils.exceptions.ApiUnprocessableEntity;
+import com.jc.apiLogistics.validator.destinoValidator.DestinoValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,9 @@ public class DestinoController {
     @Autowired
     private IDestinoServices destinoServices;
 
+    @Autowired
+    private DestinoValidator destinoValidator;
+
     @GetMapping(value = "/all/{destino}",produces = MediaType.APPLICATION_JSON_VALUE)
     private ResponseEntity<Object> listarDestinoPorTipo(@PathVariable("destino") String destino){
 
@@ -27,7 +32,9 @@ public class DestinoController {
     }
 
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
-    private ResponseEntity<Object> guardarDestino(@RequestBody DestinoRequest request){
+    private ResponseEntity<Object> guardarDestino(@RequestBody DestinoRequest request) throws ApiUnprocessableEntity {
+
+        destinoValidator.validator(request);
 
         this.destinoServices.save(request);
 

@@ -8,10 +8,8 @@ import com.jc.apiLogistics.utils.helpers.MMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author Jeffer Cardenas <jecgdevp@gmail.com>

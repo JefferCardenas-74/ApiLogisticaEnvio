@@ -2,6 +2,8 @@ package com.jc.apiLogistics.Controllers;
 
 import com.jc.apiLogistics.dto.TipoProductoRequest;
 import com.jc.apiLogistics.services.interfaces.ITipoProductoServices;
+import com.jc.apiLogistics.utils.exceptions.ApiUnprocessableEntity;
+import com.jc.apiLogistics.validator.tipoProductoValidator.TipoProductoValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,9 @@ public class TipoProductoController {
     @Autowired
     private ITipoProductoServices tipoProductoServices;
 
+    @Autowired
+    private TipoProductoValidator tipoProductoValidator;
+
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> listarTipoProductos(){
 
@@ -26,7 +31,9 @@ public class TipoProductoController {
     }
 
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> guardarTipoProducto(@RequestBody TipoProductoRequest request){
+    public ResponseEntity<Object> guardarTipoProducto(@RequestBody TipoProductoRequest request) throws ApiUnprocessableEntity {
+
+        tipoProductoValidator.validator(request);
 
         this.tipoProductoServices.save(request);
 

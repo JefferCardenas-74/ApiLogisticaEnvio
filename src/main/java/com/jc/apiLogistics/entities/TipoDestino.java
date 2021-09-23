@@ -1,10 +1,8 @@
 package com.jc.apiLogistics.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.sql.rowset.serial.SerialBlob;
 import java.io.Serializable;
 import java.util.List;
 
@@ -19,11 +17,14 @@ import java.util.List;
 public class TipoDestino implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tipodestino")
     private int id_tipodestino;
 
     @Column(name = "destino")
     private String destino;
 
+    @OneToMany(mappedBy = "id_tipodestino")
+    private List<Destino> destinos;
 
 }

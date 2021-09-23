@@ -1,16 +1,13 @@
 package com.jc.apiLogistics.Controllers;
 
 import com.jc.apiLogistics.dto.ClienteRequest;
-import com.jc.apiLogistics.dto.TipoProductoRequest;
 import com.jc.apiLogistics.services.interfaces.IClienteServices;
-import com.jc.apiLogistics.services.interfaces.IDestinoServices;
-import com.jc.apiLogistics.services.interfaces.ITipoProductoServices;
+import com.jc.apiLogistics.utils.exceptions.ApiUnprocessableEntity;
+import com.jc.apiLogistics.validator.clienteValidator.ClienteValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.IDN;
 
 /**
  * @author Jeffer Cardenas <jecgdevp@gmail.com>
@@ -22,9 +19,11 @@ import java.net.IDN;
 @RequestMapping("/v1/cliente")
 public class ClienteController {
 
-
     @Autowired
     private IClienteServices iClienteServices;
+
+    @Autowired
+    private ClienteValidator clienteValidator;
 
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> listarClientes(){
@@ -33,7 +32,9 @@ public class ClienteController {
     }
 
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> guardarCliente(@RequestBody ClienteRequest request){
+    public ResponseEntity<Object> guardarCliente(@RequestBody ClienteRequest request) throws ApiUnprocessableEntity {
+
+        clienteValidator.validator(request);
 
         this.iClienteServices.save(request);
 
