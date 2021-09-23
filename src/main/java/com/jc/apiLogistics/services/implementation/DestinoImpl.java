@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Jeffer Cardenas <jecgdevp@gmail.com>
@@ -31,11 +33,19 @@ public class DestinoImpl implements IDestinoServices {
     @Override
     public List<Destino> listarPorTipo(String destino) {
 
+        return this.destinoRepository.listarPorTipo(destino);
+    }
+
+    @Override
+    public List<Destino> listarDestinos() {
+
         List<Destino> lista = new ArrayList<>();
 
-        List<Destino> listaDestino = this.destinoRepository.listarPorTipo(destino);
+        Iterable<Destino> listaDestino = this.destinoRepository.findAll();
 
-        lista.addAll(listaDestino);
+        for(Object item : listaDestino){
+            lista.add(MMapper.modelMapper().map(item, Destino.class));
+        }
 
         return lista;
     }

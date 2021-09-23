@@ -1,5 +1,7 @@
 package com.jc.apiLogistics.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 
@@ -21,9 +23,10 @@ public class Destino implements Serializable {
     @Column(name = "id_destino")
     private int id_destino;
 
-    @ManyToOne
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "Handler"})
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipodestino")
-    private TipoDestino id_tipodestino;
+    private TipoDestino tipodestino;
 
     @Column(name = "ciudad")
     private String ciudad;

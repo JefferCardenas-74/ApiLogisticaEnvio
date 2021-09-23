@@ -6,7 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Jeffer Cardenas <jecgdevp@gmail.com>
@@ -21,4 +23,5 @@ public interface DestinoRepository extends CrudRepository<Destino, Integer> {
             nativeQuery = true
     )
     List<Destino> listarPorTipo(@Param("destino") String destino);
+
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class TipoDestino implements Serializable {
     @Column(name = "destino")
     private String destino;
 
-    @OneToMany(mappedBy = "id_tipodestino")
-    private List<Destino> destinos;
+//    @OneToMany(targetEntity = Destino.class)
+//    private List<Destino> destinos = new ArrayList<>();
 
 }

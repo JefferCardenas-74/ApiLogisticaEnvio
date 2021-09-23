@@ -25,6 +25,12 @@ public class DestinoController {
     @Autowired
     private DestinoValidator destinoValidator;
 
+    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    private ResponseEntity<Object> listarDestinos(){
+
+        return ResponseEntity.ok(this.destinoServices.listarDestinos());
+    }
+
     @GetMapping(value = "/all/{destino}",produces = MediaType.APPLICATION_JSON_VALUE)
     private ResponseEntity<Object> listarDestinoPorTipo(@PathVariable("destino") String destino){
 

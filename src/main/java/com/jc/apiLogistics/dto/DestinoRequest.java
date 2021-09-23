@@ -1,6 +1,7 @@
 package com.jc.apiLogistics.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.jc.apiLogistics.entities.TipoDestino;
 import lombok.Data;
 
 import java.awt.*;
@@ -14,7 +15,7 @@ import java.io.Serializable;
 public class DestinoRequest implements Serializable {
 
     @JsonProperty("id_tipodestino")
-    private int tipodestino;
+    private TipoDestino tipodestino;
 
     @JsonProperty("ciudad")
     private String ciudad;
