@@ -8,6 +8,12 @@ public class GeneradorGuia {
 
     private static String guia;
 
+    /**
+     *
+     * Funcion que apartir del codigo Ascii genera un String alfanumerio de 10 digitos con letras en minusculas
+     *  En el rango de 97 - 122 se encuentran las letras de la a-z y en el rango de 48-57 se encuentras los numeros del 0-9
+     * @Return
+     * */
     public static String generadorGuia(){
 
         GeneradorGuia.guia = "";

@@ -9,6 +9,13 @@ import java.util.regex.Pattern;
  */
 public class ValidarIdTransporte {
 
+    /**
+     * Funcion que recibe una placa como Stirng y a partir de una expresion regular valida si la placa en valida
+     * Para que sea valida la placa debe iniciar con 3 letras en mayusculas seguida de 3 numeros
+     * @Param String
+     * @Return Boolean
+     * */
+
     public static boolean validarPlaca(String placa) {
 
         Pattern pat = Pattern.compile("^[A-Z]{3}[0-9]{3}$");
@@ -16,6 +23,13 @@ public class ValidarIdTransporte {
 
         return mat.find();
     }
+
+    /**
+     * Funcion que recibe un numero de flota como Stirng y a partir de una expresion regular valida si el numero de flota en valido
+     * Para que sea valida el numero de flota debe iniciar con 3 letras en mayusculas seguida de 4 numeros y finalizar con una letra
+     * @Param String
+     * @Return Boolean
+     * */
 
     public static boolean validarNoFlota(String flota) {
 

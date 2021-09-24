@@ -13,7 +13,7 @@ public class DestinoValidatorImpl implements DestinoValidator{
     @Override
     public void validator(DestinoRequest request) throws ApiUnprocessableEntity {
 
-        if(request.getTipodestino().getId_tipodestino() <= 0){
+        if(request.getIdtipodestino() <= 0){
             this.message("Debe espicificar el id del destino");
         }
 

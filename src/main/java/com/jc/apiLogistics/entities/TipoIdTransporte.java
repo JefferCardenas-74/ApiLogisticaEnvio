@@ -24,5 +24,5 @@ public class TipoIdTransporte implements Serializable {
     private int idTipoIdTransporte;
 
     @Column(name = "tipoidtransporte")
-    private int tipoIdTransporte;
+    private String tipoIdTransporte;
 }

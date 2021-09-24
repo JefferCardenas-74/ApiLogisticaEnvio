@@ -21,10 +21,11 @@ public class Destino implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_destino")
-    private int id_destino;
+    private int idDestino;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private TipoDestino idtipodestino;
+    @JoinColumn(name = "idTipodestino")
+    @Column(name = "idtipodestino")
+    private int idtipodestino;
 
     @Column(name = "ciudad")
     private String ciudad;

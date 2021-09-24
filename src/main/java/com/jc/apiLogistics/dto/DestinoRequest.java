@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class DestinoRequest implements Serializable {
 
     @JsonProperty("id_tipodestino")
-    private TipoDestino tipodestino;
+    private int idtipodestino;
 
     @JsonProperty("ciudad")
     private String ciudad;

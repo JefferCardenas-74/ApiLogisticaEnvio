@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
  * @author Jeffer Cardenas <jecgdevp@gmail.com>
  * @version 1.0
  */
-
 @Service
 public interface DestinoValidator {
 

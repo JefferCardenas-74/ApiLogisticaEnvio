@@ -2,10 +2,7 @@ package com.jc.apiLogistics.entities;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -19,16 +16,19 @@ import java.io.Serializable;
 public class Transporte implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_transporte")
     private int idTransporte;
 
-    @Column(name = "id_tipotransporte")
-    private int idTipoTransporte;
+    @JoinColumn(name = "idTipoTransporte")
+    @Column(name = "idtipotransporte")
+    private int idtipotransporte;
 
-    @Column(name = "id_tipotdtransporte")
-    private int idTipoIdTransporte;
+    @JoinColumn(name = "idTipoIdTransporte")
+    @Column(name = "idtipoidtransporte")
+    private int idtipoidtransporte;
 
     @Column(name = "id")
-    private int id;
+    private String identificacion;
 
 }

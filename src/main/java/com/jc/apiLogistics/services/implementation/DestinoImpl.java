@@ -31,9 +31,9 @@ public class DestinoImpl implements IDestinoServices {
     }
 
     @Override
-    public List<Destino> listarPorTipo(String destino) {
+    public List<Destino> listarPorTipo(int destino) {
 
-        return this.destinoRepository.listarPorTipo(destino);
+        return this.destinoRepository.findByIdtipodestino(destino);
     }
 
     @Override

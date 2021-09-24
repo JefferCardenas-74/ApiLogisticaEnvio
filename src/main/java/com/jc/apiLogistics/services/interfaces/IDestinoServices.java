@@ -17,7 +17,7 @@ public interface IDestinoServices {
 
     void save(DestinoRequest destino);
 
-    List<Destino> listarPorTipo(String destino);
+    List<Destino> listarPorTipo(int destino);
 
     List<Destino> listarDestinos();
 }

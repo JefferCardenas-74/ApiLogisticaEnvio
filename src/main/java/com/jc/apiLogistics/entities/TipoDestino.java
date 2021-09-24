@@ -19,12 +19,10 @@ public class TipoDestino implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_tipodestino;
+    @Column(name = "id_tipodestino")
+    private int idTipodestino;
 
     @Column(name = "destino")
     private String destino;
-
-    @OneToMany( fetch = FetchType.LAZY, mappedBy = "")
-    private List<Destino> destinos;
 
 }
