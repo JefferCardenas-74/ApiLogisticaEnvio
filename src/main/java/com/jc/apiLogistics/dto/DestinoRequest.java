@@ -22,4 +22,5 @@ public class DestinoRequest implements Serializable {
 
     @JsonProperty("direccion")
     private String direccion;
+
 }

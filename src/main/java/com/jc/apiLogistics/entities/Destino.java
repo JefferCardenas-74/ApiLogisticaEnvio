@@ -23,10 +23,8 @@ public class Destino implements Serializable {
     @Column(name = "id_destino")
     private int id_destino;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "Handler"})
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_tipodestino")
-    private TipoDestino tipodestino;
+    private TipoDestino idtipodestino;
 
     @Column(name = "ciudad")
     private String ciudad;

@@ -19,7 +19,7 @@ import java.util.Optional;
 public interface DestinoRepository extends CrudRepository<Destino, Integer> {
 
     @Query(
-            value = "select id_destino, ciudad, direccion, tipodestino.destino from destino inner join tipodestino on destino.id_tipodestino = tipodestino.id_tipodestino where tipodestino.destino = :destino",
+            value = "select id_destino, ciudad, direccion, tipodestino.destino from destino inner join tipodestino on destino.idtipodestino = tipodestino.id_tipodestino where tipodestino.destino = :destino",
             nativeQuery = true
     )
     List<Destino> listarPorTipo(@Param("destino") String destino);
