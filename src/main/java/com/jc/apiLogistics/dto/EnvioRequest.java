@@ -15,22 +15,19 @@ import java.util.Date;
 public class EnvioRequest implements Serializable {
 
     @JsonProperty("id_cliente")
-    private int idCliente;
-
-    @JsonProperty("fecha_registro")
-    private Date fechaRegistro;
+    private int idcliente;
 
     @JsonProperty("fecha_entrega")
-    private Date fechaEntrega;
+    private String fechaEntrega;
 
     @JsonProperty("id_destino")
-    private Date idDestino;
+    private int iddestino;
 
     @JsonProperty("precio")
     private int precio;
 
     @JsonProperty("id_transporte")
-    private int idTransporte;
+    private int idtransporte;
 
 
 }

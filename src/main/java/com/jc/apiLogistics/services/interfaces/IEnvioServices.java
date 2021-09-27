@@ -4,6 +4,7 @@ import com.jc.apiLogistics.dto.EnvioRequest;
 import com.jc.apiLogistics.entities.Envio;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -13,7 +14,11 @@ import java.util.List;
 @Service
 public interface IEnvioServices {
 
-    void save(EnvioRequest request);
+    void save(EnvioRequest request) throws ParseException;
 
     List<Envio> findAll();
+
+    List<Envio> findByIddestino(int destino);
+
+    List<Envio> findByIdcliente(int cliente);
 }
