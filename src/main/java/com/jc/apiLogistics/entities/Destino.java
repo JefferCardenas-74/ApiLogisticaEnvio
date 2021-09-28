@@ -7,6 +7,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @author Jeffer Cardenas <jecgdevp@gmail.com>

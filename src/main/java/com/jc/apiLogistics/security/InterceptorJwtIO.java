@@ -30,8 +30,13 @@ public class InterceptorJwtIO implements HandlerInterceptor {
 
         boolean validate = false;
         String uri = request.getRequestURI();
+        //String uri = "/v1/auth/oauth/client_credential/accesstoken";
 
-        if(uri.equals(AUTH_PATH) || excluded(uri)){
+        System.out.println("fuera del if AUTH_PATH: " + this.AUTH_PATH);
+        System.out.println("fuera del if URI: " + uri);
+
+        if(request.getRequestURI().equals(this.AUTH_PATH) || excluded(uri)){
+            System.out.println("Ruta tomada: " + uri);
             validate = true;
         }
 
@@ -45,13 +50,13 @@ public class InterceptorJwtIO implements HandlerInterceptor {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
         }
 
-        return true;
+        return validate;
     }
 
     private boolean excluded(String path){
         boolean result = false;
 
-        for(String item : excluded){
+        for(String item : this.excluded){
             if(!item.equals("#") && item.equals(path)){
                 result = true;
             }

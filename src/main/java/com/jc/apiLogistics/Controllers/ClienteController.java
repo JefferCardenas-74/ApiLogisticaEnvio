@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
  * @version 1.0
  */
 
-@CrossOrigin("*")
 @RestController
 @RequestMapping("/v1/cliente")
 public class ClienteController {
