@@ -29,5 +29,10 @@ public class EnvioRequest implements Serializable {
     @JsonProperty("id_transporte")
     private int idtransporte;
 
+    @JsonProperty("id_tipoproducto")
+    private int idTipoProducto;
+
+    @JsonProperty("cantidad")
+    private int cantidad;
 
 }

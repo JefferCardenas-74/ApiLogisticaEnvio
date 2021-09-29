@@ -2,7 +2,9 @@ package com.jc.apiLogistics.services.implementation;
 
 import com.jc.apiLogistics.dto.EnvioRequest;
 import com.jc.apiLogistics.entities.Envio;
+import com.jc.apiLogistics.entities.TipoProductoEnvio;
 import com.jc.apiLogistics.repository.EnvioRepository;
+import com.jc.apiLogistics.repository.TipoProductoEnvioRepository;
 import com.jc.apiLogistics.services.interfaces.IEnvioServices;
 import com.jc.apiLogistics.utils.helpers.DateUtil;
 import com.jc.apiLogistics.utils.helpers.GeneradorGuia;
@@ -27,6 +29,9 @@ public class EnvioImpl implements IEnvioServices {
     private EnvioRepository envioRepository;
 
     @Autowired
+    private TipoProductoEnvioRepository tipoProductoEnvioRepository;
+
+    @Autowired
     private DateUtil dateUtil;
 
     @Override
@@ -40,7 +45,18 @@ public class EnvioImpl implements IEnvioServices {
         /* Genera una String alfanumerico de 10 digitos de manera aleatoria */
         envio.setGuia(GeneradorGuia.generadorGuia());
 
+        String guia = envio.getGuia();
+
         this.envioRepository.save(envio);
+
+        Envio nuevoEnvio = this.envioRepository.findByGuia(guia);
+
+        TipoProductoEnvio tipoProductoEnvio = new TipoProductoEnvio();
+        tipoProductoEnvio.setIdEnvio(nuevoEnvio.getIdEnvio());
+        tipoProductoEnvio.setIdTipoProducto(envio.getIdTipoProducto());
+        tipoProductoEnvio.setCantidad(envio.getCantidad());
+
+        this.tipoProductoEnvioRepository.save(tipoProductoEnvio);
     }
 
     @Override

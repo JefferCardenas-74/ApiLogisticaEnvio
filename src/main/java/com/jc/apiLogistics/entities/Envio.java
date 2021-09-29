@@ -43,6 +43,10 @@ public class Envio implements Serializable {
 
     @JoinColumn(name = "idTransporte")
     @Column(name = "id_transporte")
-    private int idtransporte;
+    private int id_transporte;
+
+    private int idTipoProducto;
+
+    private int cantidad;
 
 }
