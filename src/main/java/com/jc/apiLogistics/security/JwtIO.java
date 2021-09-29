@@ -52,6 +52,7 @@ public class JwtIO {
     }
 
     public boolean validateToken(String encodedJWT){
+
         JWT jwt = jwt(encodedJWT);
         return jwt.isExpired();
     }
@@ -64,7 +65,6 @@ public class JwtIO {
     private JWT jwt(String encodeJWT){
 
         Verifier verifier = HMACVerifier.newVerifier(SECRET);
-
         return JWT.getDecoder().decode(encodeJWT, verifier);
     }
 }

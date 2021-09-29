@@ -7,9 +7,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin("*")
-@SpringBootApplication
 @EnableConfigurationProperties
 @EnableAutoConfiguration
+@SpringBootApplication
 public class ApiLogisticsApplication {
 
 	public static void main(String[] args) {

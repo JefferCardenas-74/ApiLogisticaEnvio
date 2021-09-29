@@ -30,20 +30,16 @@ public class InterceptorJwtIO implements HandlerInterceptor {
 
         boolean validate = false;
         String uri = request.getRequestURI();
-        //String uri = "/v1/auth/oauth/client_credential/accesstoken";
 
-        System.out.println("fuera del if AUTH_PATH: " + this.AUTH_PATH);
-        System.out.println("fuera del if URI: " + uri);
+        if(uri.equals(this.AUTH_PATH) || excluded(uri)){
 
-        if(request.getRequestURI().equals(this.AUTH_PATH) || excluded(uri)){
-            System.out.println("Ruta tomada: " + uri);
             validate = true;
         }
 
         if(!validate && request.getHeader("Authorization") != null && !request.getHeader("Authorization").isEmpty()){
-            String token = request.getHeader("Authorization").replace("Bearer", "");
 
-            validate = !this.jwtIO.validateToken(token);
+            String token = request.getHeader("Authorization").replace("Bearer ", "");
+            validate = !jwtIO.validateToken(token);
         }
 
         if(!validate){
