@@ -1,6 +1,10 @@
 package com.jc.apiLogistics.validator.envioValidator;
 
 import com.jc.apiLogistics.dto.EnvioRequest;
+import com.jc.apiLogistics.entities.Destino;
+import com.jc.apiLogistics.entities.Transporte;
+import com.jc.apiLogistics.repository.DestinoRepository;
+import com.jc.apiLogistics.repository.TransporteRepository;
 import com.jc.apiLogistics.utils.exceptions.ApiUnprocessableEntity;
 import com.jc.apiLogistics.utils.helpers.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,12 @@ public class EnvioValidatorImpl implements EnvioValidator{
 
     @Autowired
     private DateUtil dateUtil;
+
+    @Autowired
+    private DestinoRepository destinoRepository;
+
+    @Autowired
+    private TransporteRepository transporteRepository;
 
     @Override
     public void validator(EnvioRequest request) throws ApiUnprocessableEntity, ParseException {
@@ -47,6 +57,13 @@ public class EnvioValidatorImpl implements EnvioValidator{
 
         if(!dateUtil.validarFecha(request.getFechaEntrega())){
             this.message("Debe ingresar una fecha valida");
+        }
+
+        Destino destino = this.destinoRepository.findByIddestino(request.getIddestino());
+        Transporte transporte = this.transporteRepository.findByIdTransporte(request.getIdtransporte());
+
+        if(destino.getIdtipodestino() != transporte.getIdtipotransporte()){
+            this.message("El tipo de destino debe coincidir con el tipo de transporte");
         }
 
     }

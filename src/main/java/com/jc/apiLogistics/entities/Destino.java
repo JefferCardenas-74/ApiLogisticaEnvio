@@ -24,7 +24,7 @@ public class Destino implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_destino")
-    private int idDestino;
+    private int iddestino;
 
     @JoinColumn(name = "idTipodestino")
     @Column(name = "idtipodestino")

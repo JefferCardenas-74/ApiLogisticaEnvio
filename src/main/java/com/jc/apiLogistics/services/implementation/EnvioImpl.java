@@ -1,8 +1,11 @@
 package com.jc.apiLogistics.services.implementation;
 
+import com.jc.apiLogistics.dto.EnvioDTO;
 import com.jc.apiLogistics.dto.EnvioRequest;
+import com.jc.apiLogistics.entities.Destino;
 import com.jc.apiLogistics.entities.Envio;
 import com.jc.apiLogistics.entities.TipoProductoEnvio;
+import com.jc.apiLogistics.repository.DestinoRepository;
 import com.jc.apiLogistics.repository.EnvioRepository;
 import com.jc.apiLogistics.repository.TipoProductoEnvioRepository;
 import com.jc.apiLogistics.services.interfaces.IEnvioServices;
@@ -32,29 +35,57 @@ public class EnvioImpl implements IEnvioServices {
     private TipoProductoEnvioRepository tipoProductoEnvioRepository;
 
     @Autowired
+    private DestinoRepository destinoRepository;
+
+    @Autowired
     private DateUtil dateUtil;
 
     @Override
     public void save(EnvioRequest request) throws ParseException {
 
-        Envio envio = MMapper.modelMapper().map(request, Envio.class);
+        EnvioDTO envioDTO = MMapper.modelMapper().map(request, EnvioDTO.class);
 
+        Envio envio = MMapper.modelMapper().map(envioDTO, Envio.class);
         envio.setFechaRegistro(dateUtil.fechaActual());
-
         envio.setFechaEntrega(dateUtil.getDate(request.getFechaEntrega()));
         /* Genera una String alfanumerico de 10 digitos de manera aleatoria */
         envio.setGuia(GeneradorGuia.generadorGuia());
+
+        /* se obitne el destino con el fin de saber que tipo de destino (bodega o puerto) es para asi mismo asginar el descuento */
+        Destino destino = this.destinoRepository.findByIddestino(envioDTO.getIddestino());
+
+        /* se valida si es puerto o bodega para asi mismo asignar el debido descuento */
+        /**
+         *  1 indica que bodega (Logistica terrestre)
+         *  2 indica que es puerto (Logistica maritima)
+         * */
+        if(envioDTO.getCantidad() > 10 && destino.getIdtipodestino() == 1){
+
+            int precio = envioDTO.getPrecio();
+            int descuento = (int)(precio * 0.05);
+            envio.setDescuento(descuento);
+
+        }else if(envioDTO.getCantidad() > 10 && destino.getIdtipodestino() == 2){
+
+            int precio = envioDTO.getPrecio();
+            int descuento = (int)(precio * 0.03);
+            envio.setDescuento(descuento);
+
+        }else{
+            envio.setDescuento(0);
+        }
 
         String guia = envio.getGuia();
 
         this.envioRepository.save(envio);
 
+        /* con base a la guia se obtiene el registro que acabamos de hacer para obtener su id y poder hacer el insert a la tabla pivote TipoProductoEnvio*/
         Envio nuevoEnvio = this.envioRepository.findByGuia(guia);
 
         TipoProductoEnvio tipoProductoEnvio = new TipoProductoEnvio();
         tipoProductoEnvio.setIdEnvio(nuevoEnvio.getIdEnvio());
-        tipoProductoEnvio.setIdTipoProducto(envio.getIdTipoProducto());
-        tipoProductoEnvio.setCantidad(envio.getCantidad());
+        tipoProductoEnvio.setIdTipoProducto(envioDTO.getIdtipoproducto());
+        tipoProductoEnvio.setCantidad(envioDTO.getCantidad());
 
         this.tipoProductoEnvioRepository.save(tipoProductoEnvio);
     }

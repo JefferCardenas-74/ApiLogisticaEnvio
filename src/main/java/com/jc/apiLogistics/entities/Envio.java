@@ -38,15 +38,14 @@ public class Envio implements Serializable {
     @Column(name = "precio")
     private int precio;
 
+    @Column(name = "descuento")
+    private int descuento;
+
     @Column(name = "guia")
     private String guia;
 
     @JoinColumn(name = "idTransporte")
     @Column(name = "id_transporte")
-    private int id_transporte;
-
-    private int idTipoProducto;
-
-    private int cantidad;
+    private int idtransporte;
 
 }

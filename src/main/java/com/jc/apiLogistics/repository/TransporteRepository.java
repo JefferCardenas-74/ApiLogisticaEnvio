@@ -16,4 +16,7 @@ public interface TransporteRepository extends CrudRepository<Transporte, Integer
 
     @Transactional
     List<Transporte> findByIdtipotransporte(int idTipo);
+
+    @Transactional
+    Transporte findByIdTransporte(int idTransporte);
 }

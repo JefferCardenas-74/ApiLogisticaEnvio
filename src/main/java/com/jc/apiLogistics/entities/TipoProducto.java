@@ -2,10 +2,7 @@ package com.jc.apiLogistics.entities;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -20,7 +17,8 @@ public class TipoProducto implements Serializable {
 
     @Id
     @Column(name = "id_tipoproducto")
-    private int idTipoProducto;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idtipoproducto;
 
     @Column(name = "tipoproducto")
     private String tipoProducto;
