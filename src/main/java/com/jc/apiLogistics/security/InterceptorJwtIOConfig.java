@@ -23,6 +23,11 @@ public class InterceptorJwtIOConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        /**
+         * se valida el estado de la variable security alojada en el archivo de application.properties
+         * si el estado es true quiere decir que el servicio tendra en cuenta la validacion de un token,
+         * de lo contrario se podra hacer uso del servicio sin la necesidad de uno
+         * */
         if(securityEnabled){
             registry.addInterceptor(interceptorJwtIO);
         }

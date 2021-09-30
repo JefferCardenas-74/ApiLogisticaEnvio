@@ -14,6 +14,9 @@ import java.util.List;
 @Repository
 public interface TransporteRepository extends CrudRepository<Transporte, Integer> {
 
+    /**
+     *  funcion para filtrar los transportes por tipo (Camion, Barco)
+     * */
     @Transactional
     List<Transporte> findByIdtipotransporte(int idTipo);
 

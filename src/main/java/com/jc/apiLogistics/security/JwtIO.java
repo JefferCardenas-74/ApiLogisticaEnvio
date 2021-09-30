@@ -40,8 +40,14 @@ public class JwtIO {
 
         TimeZone tz = TimeZone.getTimeZone(TIMEZONE);
 
+        /**
+         * se obtiene la hora actual y se le agrega el tiempo de la variable EXPIRES_IN (3600) segundos
+         * */
         ZonedDateTime zdt = ZonedDateTime.now(tz.toZoneId()).plusSeconds(EXPIRES_IN);
 
+        /**
+         * se crea el objecto jwt que posteriormente sera codificado y firmado con la clave secreta
+         * */
         JWT jwt = new JWT()
                 .setIssuer(ISSUER)
                 .setIssuedAt(ZonedDateTime.now(tz.toZoneId()))
@@ -53,6 +59,10 @@ public class JwtIO {
 
     public boolean validateToken(String encodedJWT){
 
+        /**
+         * se valida que el token que llega por parametro sea valido
+         * y se retorna false si no ha expirado y true si ya expiro
+         * */
         JWT jwt = jwt(encodedJWT);
         return jwt.isExpired();
     }
@@ -64,6 +74,10 @@ public class JwtIO {
 
     private JWT jwt(String encodeJWT){
 
+        /**
+         * con base a la palabra secreta que se uso para encriptar el token,
+         * se verifica que este sea valido
+         * */
         Verifier verifier = HMACVerifier.newVerifier(SECRET);
         return JWT.getDecoder().decode(encodeJWT, verifier);
     }

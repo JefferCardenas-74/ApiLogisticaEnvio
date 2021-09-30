@@ -59,9 +59,19 @@ public class EnvioValidatorImpl implements EnvioValidator{
             this.message("Debe ingresar una fecha valida");
         }
 
+        /**
+         *  se obitiene el destino con el fin de obtener el tipo de destino para validar que el tipo de destino
+         *  y el tipo de transporte coincida
+         * */
         Destino destino = this.destinoRepository.findByIddestino(request.getIddestino());
+        /**
+         *  se obitiene el transporte con el fin de obtener el tipo de transporte
+         * */
         Transporte transporte = this.transporteRepository.findByIdTransporte(request.getIdtransporte());
 
+        /**
+         * respectiva validacion para evitar que se ingrese un destino que no coincida con el tipo de transporte
+         * */
         if(destino.getIdtipodestino() != transporte.getIdtipotransporte()){
             this.message("El tipo de destino debe coincidir con el tipo de transporte");
         }

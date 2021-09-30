@@ -16,6 +16,9 @@ import java.util.List;
 @Repository
 public interface DestinoRepository extends CrudRepository<Destino, Integer> {
 
+    /**
+     * funcion para filtar los destinos por tipo (Bodega, Puerto)
+     * */
     List<Destino> findByIdtipodestino(int idTipoDestino);
 
     Destino findByIddestino(int idDestino);

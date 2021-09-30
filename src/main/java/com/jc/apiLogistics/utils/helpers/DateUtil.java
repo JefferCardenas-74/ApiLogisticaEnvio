@@ -30,6 +30,9 @@ public class DateUtil {
         return simpleDateFormat().format(now);
     }
 
+    /**
+     * funcion para obtener la hora actual en segundos
+     * */
     public long getDateMillis(){
         Date now = new Date();
         String strDate = simpleDateFormat().format(now);
@@ -44,6 +47,9 @@ public class DateUtil {
         return strNow.getTime();
     }
 
+    /**
+     * funcion que recive una fecha como string y la convierte a un objecto de tipo Date
+     * */
     public Date getDate(String fechaEntrega) throws ParseException {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -52,12 +58,18 @@ public class DateUtil {
         return now;
     }
 
+    /**
+     * funcion para obtener la fecha actual
+     * */
     public Date fechaActual(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date now = new Date();
         return now;
     }
 
+    /**
+     * funcion para validar que la fecha recibida sea mayor a la fecha actual
+     * */
     public boolean esMayor(String fechaEntrega) throws ParseException {
         boolean esMayor = false;
 
@@ -71,6 +83,9 @@ public class DateUtil {
         return esMayor;
     }
 
+    /**
+     * funcion para validar si una fecha de tipo string es valida segun el formato
+     * */
     public boolean validarFecha(String fecha){
         boolean valida = false;
         try {

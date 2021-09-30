@@ -8,7 +8,6 @@ import org.modelmapper.ModelMapper;
  */
 public class MMapper {
     public static ModelMapper modelMapper(){
-
         return new ModelMapper();
     }
 }

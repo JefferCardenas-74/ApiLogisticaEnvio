@@ -26,6 +26,11 @@ public class AuthService{
 
     public JwtResponse login(String clientId, String clientSecret){
 
+        /**
+         * objeto jwt que contiene el tipo de token,
+         * el token de acceso, la hora en que se genero el token,
+         * el cliente que hizo la solicitud y el tiempo de expiracion
+         * */
         JwtResponse jwt = JwtResponse.builder()
                 .tokenType("bearer")
                 .accessToken(jwtIO.generateToken("hola mundo desde AuthServices"))

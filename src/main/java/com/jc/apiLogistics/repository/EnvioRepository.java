@@ -15,9 +15,15 @@ import java.util.List;
 @Repository
 public interface EnvioRepository extends CrudRepository<Envio, Integer> {
 
+    /**
+     * funcion para filtrar los envios hacia un respectivo destino
+     * */
     @Transactional
     List<Envio> findByIddestino(int idDestino);
 
+    /**
+     * funcion para filtrar los envios realizados por un respectivo cliente
+     * */
     @Transactional
     List<Envio> findByIdcliente(int idCliente);
 
